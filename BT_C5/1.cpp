@@ -2,7 +2,6 @@
 using namespace std;
 #define M 20
 /*
-	A B C D E F G
 7
 0 1 1 1 0 0 0
 1 0 1 0 1 1 0
