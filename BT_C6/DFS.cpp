@@ -1,108 +1,113 @@
 #include<iostream>
-#include<fstream>
+#include<cstdlib>
 #include<cstring>
-#include<stack>
 #include<cstdio>
 using namespace std;
-#define M 101
+#define M 100
 int a[M][M];
 int vertex[M];
-// chuyển từ ma trận kê sang danh sách kề
-void input(int a[][M],int vertex[],int &n){
-    ifstream in("text.txt");
-    if(in.is_open()){
-        in >> n;
-        for(int i = 0;i<n;i++){
-            in >> vertex[i];
-        }
-        for(int i = 0;i<n;i++){
-            for(int j = 0;j<n;j++){
-                in >> a[i][j];
-            }
-        }
-        in.close();
-    }
-    else cout << "Error \n"; 
+/*
+7
+0 1 1 1 0 0 0
+1 0 1 0 1 1 0
+1 1 0 1 0 1 0
+1 0 1 0 0 1 1
+0 1 0 0 0 1 0
+0 1 1 1 1 0 1
+0 0 0 1 0 1 0
+*/
+struct node{
+    int val;
+    node* next;
+    // node() : val(0),next(nullptr){}
+    // node(int x) : val(x),next(nullptr){}
+};
+typedef node* qu;
+//qu Queue;
+void init(qu &Queue){
+    Queue = NULL;
 }
-void output(int a[][M],int vertex[],int n)
-{
-    cout << "Adjency matrix : \n";
-    cout << "    ";
+void push(qu &Queue,int x){
+    qu ins = new node;
+    ins->val = x;
+    ins->next = NULL;
+    if(Queue == NULL) 
+    {
+        Queue = ins;
+    }
+    else{
+        qu p = Queue;
+        while(p->next){
+            p = p->next;
+        }
+        p->next = ins;
+    }
+}
+void pop(qu &Queue){
+    qu tmp = Queue;
+    Queue = Queue->next;
+    delete tmp;
+    //return x;
+}
+bool empty(qu Queue){
+    if(Queue == NULL) { return true; }
+    return false;
+}
+int front(qu Queue){
+    return Queue->val;
+}
+
+void input(int a[][M],int vertex[],int &n){
+    //cout << "Input number of vertex : \n";
+    cin >> n;
+    for(int i = 0;i<n;i++){
+        vertex[i] = i+1;
+    }
+    for(int i = 0;i<n;i++){
+        for(int j = 0;j<n;j++){
+            cin >> a[i][j];
+        }
+    }
+}
+void output(int a[][M],int vertex[],int n){
+    cout << "  ";
     for(int i = 0;i<n;i++){
         cout << vertex[i] << " ";
     }
-    cout << "\n";
+    cout << '\n';
     for(int i = 0;i<n;i++){
-        cout << vertex[i] << " : ";
+        cout << vertex[i] << " ";
         for(int j = 0;j<n;j++){
             cout << a[i][j] << " ";
         }
-        cout << "\n";
+        cout << '\n';
     }
 }
-
-void DFS(int a[][M],int vertex[],int n,int &x){
-    cout << "Input the start vertex : ";
-    cin >> x;
-    stack<int> s;
-    bool checked[M];
-    memset(checked,false,sizeof(checked));
-    cout << vertex[x] << " ";
-    s.push(x);
-    checked[x] = true;
-    int w = -1,u = x;
-    while(!s.empty()){
-        if(w == n){
-            u = s.top();
-            s.pop();
-        }
-        for(w = 0;w < n;w++){
-            if(!checked[w] && a[u][w] != 0){
-                s.push(u);
-                s.push(w);
-                cout << vertex[w] << " ";
-                checked[w] = true;
-                u = w;
-                break;
-            }
-        }
-    }
-}
-bool find(int a[][M],int vertex[],int n,int &search){
-    cout << "Input the vertex you want to find : ";
-    cin >> search;
-    int x = 0;
-    stack<int> s;
-    bool check[M];memset(check,false,sizeof(check));
-    if(vertex[x] == search) return true;
+void bfs(int a[][M],int vertex[],int n,int x){
+    qu Q;init(Q);
+    bool check[M];
+    memset(check,false,sizeof(check));
+    push(Q,x);
     check[x] = true;
-    s.push(x);
-    int w = -1,u = x;
-    while(!s.empty()){
-        if(w == n){
-            u = s.top();
-            s.pop();
-        }
-        for(w = 0;w<n;w++){
-            if(!check[w] && a[u][w]!=0){
-                s.push(u);
-                s.push(w);
-                if(vertex[w] == search) return true;
-                check[w] = true;
-                u = w;
-                break;
+    while(empty(Q) ==  false){
+        int p = front(Q);
+        pop(Q);
+        cout << vertex[p] << " "; 
+        for(int i = 0;i<n;i++){
+            if(check[i] == false && a[p][i] == 1){
+                check[i] = true;
+                push(Q,i);
             }
         }
     }
-    return false;
+    cout << endl;
 }
-int n,x,search;
 int main(){
+    ios::sync_with_stdio(false) ; 
+    cin.tie(nullptr);
+    int n;
     input(a,vertex,n);
     output(a,vertex,n);
-    DFS(a,vertex,n,x);
-    string ans;
-    ans = find(a,vertex,n,search) ? "y" : "n";
-    cout << ans << "\n";
+    cout << "bfs : ";bfs(a,vertex,n,0);
     return 0;
 }
