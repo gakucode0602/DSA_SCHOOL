@@ -8,10 +8,10 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "c:/Users/ADMIN/OneDrive/Máy tính/Semester_4/DSA_2/BT_C6",
+      "program": "c:/Users/ADMIN/OneDrive/Máy tính/Semester_4/DSA_2/BT_C6/build/Debug/outDebug",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:/new_g++/ucrt64/bin/gdb.exe",
+      "miDebuggerPath": "gdb",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
