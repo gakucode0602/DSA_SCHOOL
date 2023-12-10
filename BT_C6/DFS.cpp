@@ -2,6 +2,7 @@
 #include<cstdlib>
 #include<cstring>
 #include<cstdio>
+#include<stack>
 using namespace std;
 #define M 100
 int a[M][M];
@@ -83,31 +84,39 @@ void output(int a[][M],int vertex[],int n){
         cout << '\n';
     }
 }
-void bfs(int a[][M],int vertex[],int n,int x){
-    qu Q;init(Q);
-    bool check[M];
-    memset(check,false,sizeof(check));
-    push(Q,x);
-    check[x] = true;
-    while(empty(Q) ==  false){
-        int p = front(Q);
-        pop(Q);
-        cout << vertex[p] << " "; 
-        for(int i = 0;i<n;i++){
-            if(check[i] == false && a[p][i] == 1){
-                check[i] = true;
-                push(Q,i);
+
+void DFS(int a[][M],int vertex[],int n,int x){
+    stack<int> s;
+    bool C[M];
+    memset(C,false,sizeof(C));
+    cout << vertex[x] << " ";
+    C[x] = true;
+    s.push(x);
+    int w = x,u = -1;
+    while(!s.empty()){
+        if(w == n){
+            u = s.top();
+            s.pop();
+        }
+        for(w = 0;w<n;w++){
+            if(C[w] == false and a[u][w] != 0){
+                s.push(w);
+                //s.push(u);
+                cout << vertex[w] << " ";
+                C[w] = true;
+                u = w;
+                break;
             }
         }
     }
     cout << endl;
 }
+
 int main(){
-    ios::sync_with_stdio(false) ; 
-    cin.tie(nullptr);
     int n;
     input(a,vertex,n);
     output(a,vertex,n);
-    cout << "bfs : ";bfs(a,vertex,n,0);
+    cout << "DFS : ";
+    DFS(a,vertex,n,0);
     return 0;
 }

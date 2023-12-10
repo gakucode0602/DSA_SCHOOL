@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.TS": "typescript",
+        "iosfwd": "cpp"
+    }
+}
