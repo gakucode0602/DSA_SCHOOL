@@ -64,18 +64,18 @@ void BFS(int a[][M], int vertex[], int n, int& x) {
 	cout << "Input the vertex you want to start : "; cin >> x;
 	queue<int> q;
 	bool C[M];
-	memset(C, false, sizeof(C));
-	q.push(x);
-	C[x] = true;
+	memset(C, false, sizeof(C)); // set the false for the whole vertices array because it hasn't checked yet
+	q.push(x); // Start index of the vertices array
+	C[x] = true; // vistited
 	cout << "BFS : ";
 	while (!q.empty()) {
-		int p = q.front();
-		q.pop();
+		int p = q.front(); // get the first ele at front in queue
+		q.pop(); // pop it out
 		cout << vertex[p] << " ";
 		for (int i = 0; i < n; i++) {
-			if (!C[i] && a[p][i] == 1) {
-				q.push(i);
-				C[i] = true;
+			if (!C[i] && a[p][i] == 1) { // checking whether the p we get has the adjency vertex
+				q.push(i); // push it to the queue
+				C[i] = true; // visited
 			}
 		}
 	}
