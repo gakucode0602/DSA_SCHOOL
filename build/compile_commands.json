@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/ADMIN/OneDrive/Desktop/Semester_4/DSA_2/build",
+  "command": "C:/new_g++/ucrt64/bin/g++.exe   -g -o CMakeFiles/DSA_2.dir/new_prim.cpp.obj -c C:/Users/ADMIN/OneDrive/Desktop/Semester_4/DSA_2/new_prim.cpp",
+  "file": "C:/Users/ADMIN/OneDrive/Desktop/Semester_4/DSA_2/new_prim.cpp",
+  "output": "CMakeFiles/DSA_2.dir/new_prim.cpp.obj"
+}
+]
