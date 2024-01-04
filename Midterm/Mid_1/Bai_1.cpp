@@ -57,7 +57,6 @@ void BFS(int a[][M],char vertex[],int n,int start,int &cnt){
     queue<int> q;
     q.push(start);
     C[start] = true;
-    //cout << "BFS : ";
     while(!q.empty()){
         int p = q.front();
         q.pop();
@@ -182,7 +181,6 @@ void createE(int a[][M],int n){
                 E2[nE] = j;
                 wE[nE] = a[i][j];
                 nE++;
-                //a[i][j] = 0;a[j][i] = 0;
                 kruskal_Check[i][j] = true;
                 kruskal_Check[i][j] = true;
             }
@@ -297,8 +295,6 @@ int main(){
             case 8:
             {
                 system("cls");
-                // createE(a,n);
-                // sortE();
                 cout << "Kruskal : \n";
                 Kruskal(a,vertex,n); // Ham createE va ham sort duoc cap nhat lai sau moi lan chay chuong trinh
                 break;
