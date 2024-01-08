@@ -4,7 +4,7 @@
 using namespace std;
 #define M 101
 int a[M][M];
-
+char vertex[M] = {'a','b','c','d','e','f','g','h','i'};
 //
 int E1[M];
 int E2[M];
@@ -62,7 +62,7 @@ void kruskal(int a[][M],int n){
         T1[nT] = E1[i];
         T2[nT] = E2[i];
         wT[nT] = wE[i];
-        cout << T1[nT] << " - " << T2[nT] << " - " << wT[nT] << endl;
+        cout << vertex[T1[nT]] << " - " << vertex[T2[nT]] << " - " << wT[nT] << endl;
         sum+=wT[nT];
         nT++;
         if(nT == n-1) break;
@@ -78,9 +78,9 @@ int main(){
 	    {0, 0, 7, 0, 9, 14, 0, 0, 0},
 	    {0, 0, 0, 9, 0, 10, 0, 0, 0},
 	    {0, 0, 4, 14, 10, 0, 2, 0, 0},
-	    {0, 0, 3, 0, 0, 2, 0, 1, 3},
+	    {0, 0, 3, 0, 0, 2, 0, 1, 4},
 	    {8, 11, 0, 0, 0, 0, 1, 0, 7},
-	    {0, 0, 4, 0, 0, 0, 3, 7, 0}};
+	    {0, 0, 4, 0, 0, 0, 4, 7, 0}};
         taoE(a,n);
         sortE(a,n);
         kruskal(a,n);

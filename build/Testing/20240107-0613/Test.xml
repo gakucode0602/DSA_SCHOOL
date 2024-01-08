@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-make"
+	BuildStamp="20240107-0613-Experimental"
+	Name="JARVIS"
+	Generator="ctest-3.26.1"
+	CompilerName="C:/new_g++/ucrt64/bin/g++.exe"
+	CompilerVersion="13.1.0"
+	OSName="Windows"
+	Hostname="JARVIS"
+	OSRelease=" Personal"
+	OSVersion=" (Build 22621)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="5"
+	ProcessorCacheSize="-1"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="17229"
+	TotalPhysicalMemory="8013"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2592"
+	>
+	<Testing>
+		<StartDateTime>Jan 07 21:18 SE Asia Standard Time</StartDateTime>
+		<StartTestTime>1704637110</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jan 07 21:18 SE Asia Standard Time</EndDateTime>
+		<EndTestTime>1704637110</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
