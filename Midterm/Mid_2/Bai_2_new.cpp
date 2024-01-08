@@ -150,7 +150,6 @@ void prim(nd a[],int n){
     while(no_edge < n-1){
         int min = INF;
         int x = 0,y = 0;
-        int i = 0;
         for(int i = 0;i<n;i++){
             if(C[i]){
                 nd p = a[i];
